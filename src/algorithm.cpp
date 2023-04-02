@@ -22,7 +22,8 @@ size_t findOptimalBlock(const Blocks& blocks, const Reqs& reqs)
 
         for (size_t i = 0; i < reqs.size(); i++)
         {
-            if (blocks[blockIndex].at(reqs[i]))
+            auto reqIt = blocks[blockIndex].find(reqs[i]);
+            if (reqIt != blocks[blockIndex].end() && reqIt->second)
                 currDistances[i] = 0;
 
             if (currDistances[i] < blocksDistances[blockIndex][i])
